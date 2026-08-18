@@ -1,0 +1,272 @@
+<think>
+The user wants me to build the landing page (index.html) for a SaaS micro-product called "ActiveCampaign LTV Segmenter v3". Let me carefully follow all the specifications:
+
+1. Static HTML + Tailwind CDN only
+2. Shared top nav with brand name on left, nav links on right, "Open App" as filled button
+3. Hero section, 3-feature grid, how it works (3-step), pricing teaser (cheapest + highlighted only), FAQ, footer
+4. Specific color palette and typography (Manrope)
+5. Design mood: no-nonsense, spreadsheet-native, data-focused, trustworthy
+6. Use exact content from the spec
+
+Let me build this carefully, making sure the design feels like a real product built by a design-literate founder — dense, data-table-forward, minimal marketing fluff.
+
+I need to use Tailwind arbitrary values for the custom colors and apply Manrope throughout. Let me also configure Tailwind via CDN to extend the theme.
+</think>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ActiveCampaign LTV Segmenter v3 — Automate LTV Segmentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { DEFAULT: '#4a6fa5', hover: '#3a5a8f', light: '#e8edf4' },
+        surface: '#ffffff',
+        'page-bg': '#f9f9f9',
+        'text-primary': '#333333',
+        'text-muted': '#666666',
+        border: { DEFAULT: '#e0e0e0', light: '#e8e8e8' },
+      },
+      fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+  * { font-family: 'Manrope', sans-serif; }
+  body { background-color: #f9f9f9; color: #333333; }
+  input:focus, textarea:focus, select:focus, button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74,111,165,0.25);
+    border-color: #4a6fa5;
+  }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #4a6fa5;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body class="font-manrope text-text-primary antialiased">
+
+<!-- ==================== NAV ==================== -->
+<nav class="bg-surface border-b border-border sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="text-base font-bold text-text-primary tracking-tight hover:text-primary transition-colors">
+        ActiveCampaign LTV Segmenter v3
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors">Home</a>
+        <a href="pricing.html" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors">Pricing</a>
+        <a href="app.html" class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-primary hover:bg-primary-hover rounded-md transition-colors">Open App</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="bg-surface border-b border-border-light">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold text-primary tracking-widest uppercase mb-4">ActiveCampaign × Stripe Integration</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary leading-tight tracking-tight">
+        Automate LTV segmentation in ActiveCampaign without manual CSV exports
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-text-muted max-w-2xl">
+        DTC marketing agencies waste hours manually updating customer segments in ActiveCampaign. Our tool automatically syncs Stripe transactions to recalculate LTV and dynamically segment contacts based on real-time value shifts.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="app.html" class="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-primary hover:bg-primary-hover rounded-md transition-colors">
+          Get Started — It's Free
+        </a>
+        <a href="pricing.html" class="inline-flex items-center px-6 py-3 text-sm font-semibold text-primary bg-primary-light hover:bg-[#dde4f0] rounded-md transition-colors">
+          View Plans
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES GRID ==================== -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+  <p class="text-sm font-semibold text-primary tracking-widest uppercase mb-2">Features</p>
+  <h2 class="text-2xl sm:text-3xl font-bold text-text-primary tracking-tight">Everything you need to automate segmentation</h2>
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- Feature 1 -->
+    <div class="bg-surface border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
+      <div class="w-10 h-10 flex items-center justify-center rounded-md bg-primary-light text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+      </div>
+      <h3 class="text-lg font-bold text-text-primary mb-2">Automated LTV Calculation</h3>
+      <p class="text-sm leading-relaxed text-text-muted">Parse and process Stripe transaction data to calculate real-time Lifetime Value (LTV) for each customer.</p>
+    </div>
+    <!-- Feature 2 -->
+    <div class="bg-surface border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
+      <div class="w-10 h-10 flex items-center justify-center rounded-md bg-primary-light text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+      </div>
+      <h3 class="text-lg font-bold text-text-primary mb-2">Dynamic Segmentation</h3>
+      <p class="text-sm leading-relaxed text-text-muted">Automatically move contacts between ActiveCampaign lists (e.g., 'Mid-Tier' to 'VIP') when LTV thresholds are crossed.</p>
+    </div>
+    <!-- Feature 3 -->
+    <div class="bg-surface border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
+      <div class="w-10 h-10 flex items-center justify-center rounded-md bg-primary-light text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+      </div>
+      <h3 class="text-lg font-bold text-text-primary mb-2">No Manual CSV Work</h3>
+      <p class="text-sm leading-relaxed text-text-muted">Skip the back-and-forth of exporting CSVs from Stripe and re-uploading them to ActiveCampaign.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="bg-surface border-t border-b border-border">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+    <p class="text-sm font-semibold text-primary tracking-widest uppercase mb-2">How It Works</p>
+    <h2 class="text-2xl sm:text-3xl font-bold text-text-primary tracking-tight">Three steps. No CSV headaches.</h2>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-0">
+      <!-- Step 1 -->
+      <div class="relative px-0 md:px-6 pb-8 md:pb-0">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white text-sm font-bold">1</div>
+          <div>
+            <h3 class="text-base font-bold text-text-primary">Upload Data</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-muted">Upload your contacts and Stripe transaction CSVs directly into the tool.</p>
+          </div>
+        </div>
+        <div class="hidden md:block absolute top-5 left-[calc(50%+20px)] w-[calc(100%-40px)] border-t-2 border-dashed border-border"></div>
+      </div>
+      <!-- Step 2 -->
+      <div class="relative px-0 md:px-6 pb-8 md:pb-0">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white text-sm font-bold">2</div>
+          <div>
+            <h3 class="text-base font-bold text-text-primary">Calculate LTV</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-muted">The tool parses the data and calculates the Lifetime Value (LTV) for each customer.</p>
+          </div>
+        </div>
+        <div class="hidden md:block absolute top-5 left-[calc(50%+20px)] w-[calc(100%-40px)] border-t-2 border-dashed border-border"></div>
+      </div>
+      <!-- Step 3 -->
+      <div class="relative px-0 md:px-6">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white text-sm font-bold">3</div>
+          <div>
+            <h3 class="text-base font-bold text-text-primary">Segment Contacts</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-muted">Based on LTV thresholds, the tool dynamically segments contacts in ActiveCampaign.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING TEASER ==================== -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+  <p class="text-sm font-semibold text-primary tracking-widest uppercase mb-2">Pricing</p>
+  <h2 class="text-2xl sm:text-3xl font-bold text-text-primary tracking-tight">Simple, transparent pricing</h2>
+  <p class="mt-2 text-text-muted text-sm">Start free. Upgrade when you're ready to automate.</p>
+
+  <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl">
+    <!-- Free Plan -->
+    <div class="bg-surface border border-border rounded-lg p-6">
+      <h3 class="text-lg font-bold text-text-primary">Free</h3>
+      <div class="mt-3 flex items-baseline gap-1">
+        <span class="text-3xl font-extrabold text-text-primary">$0</span>
+      </div>
+      <ul class="mt-5 space-y-2.5">
+        <li class="flex items-start gap-2.5 text-sm text-text-muted">
+          <svg class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          Single CSV upload
+        </li>
+        <li class="flex items-start gap-2.5 text-sm text-text-muted">
+          <svg class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          Basic LTV calculation
+        </li>
+        <li class="flex items-start gap-2.5 text-sm text-text-muted">
+          <svg class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          Manual export of results
+        </li>
+      </ul>
+      <a href="app.html" class="mt-6 w-full inline-flex justify-center items-center px-4 py-2.5 text-sm font-semibold text-primary border border-primary rounded-md hover:bg-primary-light transition-colors">
+        Try it free
+      </a>
+    </div>
+    <!-- Pro Plan (highlighted) -->
+    <div class="bg-surface border-2 border-primary rounded-lg p-6 relative shadow-sm">
+      <div class="absolute -top-3 left-6 inline-block px-3 py-0.5 text-xs font-bold text-white bg-primary rounded-full uppercase tracking-wide">Popular</div>
+      <h3 class="text-lg font-bold text-text-primary">Pro</h3>
+      <div class="mt-3 flex items-baseline gap-1">
+        <span class="text-3xl font-extrabold text-text-primary">$29</span>
+        <span class="text-sm text-text-muted">/mo</span>
+      </div>
+      <ul class="mt-5 space-y-2.5">
+        <li class="flex items-start gap-2.5 text-sm text-text-muted">
+          <svg class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          Unlimited CSV uploads
+        </li>
+        <li class="flex items-start gap-2.5 text-sm text-text-muted">
+          <svg class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          Automated LTV recalculation
+        </li>
+        <li class="flex items-start gap-2.5 text-sm text-text-muted">
+          <svg class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          Scheduled syncs with ActiveCampaign
+        </li>
+        <li class="flex items-start gap-2.5 text-sm text-text-muted">
+          <svg class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          Export results directly to ActiveCampaign
+        </li>
+      </ul>
+      <a href="pricing.html" class="mt-6 w-full inline-flex justify-center items-center px-4 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary-hover rounded-md transition-colors">
+        Get Pro
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="bg-surface border-t border-b border-border">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+    <p class="text-sm font-semibold text-primary tracking-widest uppercase mb-2">FAQ</p>
+    <h2 class="text-2xl sm:text-3xl font-bold text-text-primary tracking-tight">Frequently asked questions</h2>
+    <div class="mt-10 divide-y divide-border max-w-3xl">
+      <!-- FAQ 1 -->
+      <details class="group py-5 [:open]:pb-2">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <h3 class="text-base font-semibold text-text-primary pr-4">How does this tool connect to ActiveCampaign?</h3>
+          <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary-light text-primary text-sm group-open:rotate-180 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </span>
+        </summary>
+        <p class="text-sm leading-relaxed text-text-muted mt-2 pl-0 pr-4">The Pro plan allows you to export results directly to ActiveCampaign, or you can manually export the CSV and upload it to ActiveCampaign.</p>
+      </details>
+      <!-- FAQ 2 -->
+      <details class="group py-5 [:open]:pb-2">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <h3 class="text-base font-semibold text-text-primary pr-4">What if my contacts have complex transaction histories?</h3>
+          <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary-light text-primary text-sm group-open:rotate-180 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </span>
+        </summary>
+        <p class="text-sm leading-relaxed text-text-muted mt-2 pl-0 pr-4">Our tool handles complex transaction histories by recalculating LTV in real-time based on the latest data.</p>
+      </details>
+      <!-- FAQ 3 -->
+      <details class="group py-5 [:open]:pb-2">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <h3 class="text-base font-semibold text-text-primary pr-4">Can I use this tool for other CRM platforms?</h3>
+          <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary-light text-primary text-sm group-open:rotate-180 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </span>
+        </summary>
+        <p class="text-sm leading-rel

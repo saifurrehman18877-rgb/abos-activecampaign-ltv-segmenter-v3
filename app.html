@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActiveCampaign LTV Segmenter v3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-hover: #3a5a8f;
+            --accent: #4a6fa5;
+            --background: #f9f9f9;
+            --surface: #ffffff;
+            --text-primary: #333333;
+            --text-muted: #666666;
+            --border: #e0e0e0;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-gray-900">ActiveCampaign LTV Segmenter v3</span>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-gray-900">Home</a>
+                    <a href="pricing.html" class="text-gray-500 hover:text-gray-900">Pricing</a>
+                    <a href="app.html" class="px-4 py-2 rounded-md text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)]">Open App</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h1 class="text-3xl font-bold mb-8">LTV Segmenter App</h1>
+
+        <div class="bg-white shadow rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Upload Your Data</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="contacts-csv" class="block text-sm font-medium text-gray-700 mb-2">Contacts CSV</label>
+                    <textarea id="contacts-csv" rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"></textarea>
+                </div>
+                <div>
+                    <label for="transactions-csv" class="block text-sm font-medium text-gray-700 mb-2">Transactions CSV</label>
+                    <textarea id="transactions-csv" rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"></textarea>
+                </div>
+            </div>
+            <button id="process-data" class="mt-6 px-4 py-2 rounded-md text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)]">Process Data</button>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Results</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact ID</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">LTV</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Segment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-table" class="bg-white divide-y divide-gray-200">
+                        <!-- Results will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <button id="export-csv" class="mt-6 px-4 py-2 rounded-md text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)]">Export CSV</button>
+        </div>
+    </div>
+
+    <script src="logic.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
